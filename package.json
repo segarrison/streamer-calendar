@@ -24,5 +24,11 @@
   "homepage": "https://github.com/segarrison/streamer-calendar#readme",
   "devDependencies": {
     "concurrently": "^6.4.0"
+  },
+  "dependencies": {
+    "apollo-server-express": "^3.5.0",
+    "express": "^4.17.1",
+    "graphql": "^16.0.1",
+    "mongoose": "^6.0.14"
   }
 }
