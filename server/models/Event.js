@@ -1,6 +1,6 @@
 const { Schema, model } = require("mongoose");
 
-const HostedSchema = new Schema({
+const EventSchema = new Schema({
   host: {
     type: Schema.Types.ObjectId,
     ref: "User",
@@ -15,15 +15,24 @@ const HostedSchema = new Schema({
     required: true,
     trim: true,
   },
-
   event_date: {
-    type: Date,
+    type: String,
     required: true,
   },
-  participants: {
-    type: Schema.Types.ObjectId,
-    ref: "User",
+  event_time: {
+    type: String,
+    required: true,
   },
+  num_of_part: {
+    type: Number,
+    required: true,
+  },
+  participants: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
+  ],
 
   eventCreated: {
     type: Date,
@@ -31,6 +40,6 @@ const HostedSchema = new Schema({
   },
 });
 
-const Hosted = model("Hosted", HostedSchema);
+const Event = model("Event", EventSchema);
 
-module.exports = Hosted;
+module.exports = Event;

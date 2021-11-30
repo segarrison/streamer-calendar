@@ -1,5 +1,5 @@
 const User = require('./User');
-const Hosted = require('./Hosted');
-const Joined = require('./Joined');
+const Event = require('./Event');
 
-module.exports = { User, Hosted, Joined}
+
+module.exports = { User, Event}
