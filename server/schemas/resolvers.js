@@ -11,12 +11,12 @@ const resolvers = {
       return await Event.find({}).populate('users');
     },
 
-    user : async () => {
-      return await User.findOne({}).populate('events');
+    user : async (parent, { username }) => {
+      return await User.findOne({ username }).populate('events');
     },
       // finds eveents and what is connected to them
-    event : async() => {
-      return await Event.findOne({}).populate('users');
+    event : async(parent, {EventId}) => {
+      return await Event.findOne({_id: EventId}).populate('users');
     }
   },
   Mutation: {
