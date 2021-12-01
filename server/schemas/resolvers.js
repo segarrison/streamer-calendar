@@ -17,7 +17,7 @@ const resolvers = {
       return await User.findOne({ username }).populate('events');
     },
       // finds eveents and what is connected to them
-    event : async(parent, {EventId}) => {
+    event : async(parent, { EventId }) => {
       return await Event.findOne({_id: EventId}).populate('users');
     }
   },
