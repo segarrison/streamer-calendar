@@ -6,22 +6,27 @@ const typeDefs = gql`
     username: String!
     password: String!
     email: String!
-    userCreated: string!
-    hosted_events:[Hosted Events]
+    userCreated: String!
+    hosted_events:[Events]
   }
 
-  type  Hosted Events{
+  type Events{
     _id: ID!
-    name: String!
-    event_date: String!
-    event_time:string!
-    event_creation: Date!
-    description: String
-    participants:[Joined Events]
+    host: String!
+    event_name: String!
+    event_desc: String!
+    event_date:String!
+    event_time:String!
+    num_of_part: String!
+    participants:[User]
   }
 
 
   type Query {
+    users:[User]
+    events:[Events]
+    user:[User]
+    user:[Events]
   }
 
   type Mutation {
