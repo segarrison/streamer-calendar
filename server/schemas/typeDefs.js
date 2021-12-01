@@ -12,11 +12,12 @@ const typeDefs = gql`
 
   type Events{
     _id: ID!
-    name: String!
-    event_date: String!
+    host: String!
+    event_name: String!
+    event_desc: String!
+    event_date:String!
     event_time:String!
-    event_creation: String!
-    description: String
+    num_of_part: String!
     participants:[User]
   }
 
@@ -24,8 +25,8 @@ const typeDefs = gql`
   type Query {
     users:[User]
     events:[Events]
-    user:[]
-    user:[]
+    user:[User]
+    user:[Events]
   }
 
   type Mutation {
