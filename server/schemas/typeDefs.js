@@ -21,7 +21,6 @@ const typeDefs = gql`
     participants:[User] 
   }
 
-
   type Query {
     users:[User]
     events:[Events]
@@ -29,7 +28,14 @@ const typeDefs = gql`
     user:[Events]
   }
 
+  type Auth {
+    token: ID!
+    user: User
+}
+
   type Mutation {
+      newUser(username: String!, password: String!, email: String!): Auth
+      login(username: String!, password: String!): Auth
 
   }
 `;
