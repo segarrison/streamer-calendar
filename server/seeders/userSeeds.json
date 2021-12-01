@@ -1,13 +1,13 @@
 [
     {
-        "username":"Sarah",
+        "username":"Sarahpeara",
         "password":"Sarah1",
         "email":"Sarah3@gmail.com",
         "userCreated":"1/2/2021",
         "hosted_events":[1,8]
     },
     {
-        "username":"Nate",
+        "username":"ndog",
         "password":"lateNate1",
         "email":"nat@gmail.com",
         "userCreated":"1/2/2021",
@@ -49,9 +49,9 @@
         "hosted_events":[7]
     },
     {
-        "username":"",
-        "password":"",
-        "email":"",
+        "username":"rengoku",
+        "password":"firesword1",
+        "email":"bestHarshira@gmail.com",
         "userCreated":"1/2/2021",
         "hosted_events":[]
     }
