@@ -24,10 +24,12 @@ const typeDefs = gql`
   type Query {
     users:[User]
     events:[Events]
+    user:[]
+    user:[]
   }
 
   type Mutation {
-    
+
   }
 `;
 

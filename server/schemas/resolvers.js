@@ -9,6 +9,14 @@ const resolvers = {
       // finds eveents and what is connected to them
     events : async() => {
       return await Event.find({}).populate('users');
+    },
+
+    user : async () => {
+      return await User.findOne({}).populate('events');
+    },
+      // finds eveents and what is connected to them
+    event : async() => {
+      return await Event.findOne({}).populate('users');
     }
   },
   Mutation: {
