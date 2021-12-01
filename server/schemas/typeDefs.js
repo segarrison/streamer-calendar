@@ -15,10 +15,10 @@ const typeDefs = gql`
     host: String!
     event_name: String!
     event_desc: String!
-    event_date:String!
-    event_time:String!
-    num_of_part: String!
-    participants:[User]
+    event_date: String!
+    event_time: String!
+    num_of_part: Int!
+    participants:[User] 
   }
 
 
