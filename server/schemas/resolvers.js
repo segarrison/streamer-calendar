@@ -8,7 +8,7 @@ const resolvers = {
     users : async () => {
       return await User.find({});
     },
-      // finds eveents and what is connected to them
+      // finds events and what is connected to them
     events : async() => {
       return await Event.find({}).populate('users');
     },
@@ -42,7 +42,20 @@ const resolvers = {
           const token = signToken(user);
           return {user, token};
            
-      }
+      },
+      addEvent: async (parent, args) => {
+        const event = await Event.create(args);
+
+        return event;
+      },
+      addParticipants: async (parent, {eventId, userObjectID}) => {
+        const event = await Event.findByIdAndUpdate({_id: eventId },
+          {$push: {participants: userObjectID}},
+          {new:true}
+          );
+
+        return event;
+      },
   }
 }
 
