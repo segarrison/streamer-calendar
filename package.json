@@ -2,7 +2,7 @@
   "name": "streamer-calendar",
   "version": "1.0.0",
   "description": "A MERN app to enable streamers to schedule additional participants for their streams.",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/server.js",
@@ -26,9 +26,6 @@
     "concurrently": "^6.4.0"
   },
   "dependencies": {
-    "apollo-server-express": "^3.5.0",
-    "express": "^4.17.1",
-    "graphql": "^16.0.1",
-    "mongoose": "^6.0.14"
+    "express": "^4.17.1"
   }
 }
