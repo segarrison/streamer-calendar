@@ -2,7 +2,7 @@
   "name": "streamer-calendar",
   "version": "1.0.0",
   "description": "A MERN app to enable streamers to schedule additional participants for their streams.",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/server.js",
