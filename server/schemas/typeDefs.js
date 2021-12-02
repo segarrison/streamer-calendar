@@ -25,7 +25,7 @@ const typeDefs = gql`
     users:[User]
     events:[Events]
     user:[User]
-    user:[Events]
+    event:[Events]
   }
 
   type Auth {

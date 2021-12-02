@@ -4,9 +4,9 @@ const {signToken} = require('../utils/auth');
 
 const resolvers = {
   Query: {
-      // finds users and what is connected to them
+
     users : async () => {
-      return await User.find({}).populate('events');
+      return await User.find({});
     },
       // finds eveents and what is connected to them
     events : async() => {
