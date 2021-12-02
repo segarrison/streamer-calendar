@@ -6,11 +6,11 @@ const resolvers = {
   Query: {
 
     users : async () => {
-      return await User.find({});
+      return await User.find({}).populate('hosted_events');
     },
       // finds events and what is connected to them
     events : async() => {
-      return await Event.find({}).populate('users');
+      return await Event.find({})
     },
 
     user : async (parent, { username }) => {
@@ -28,7 +28,7 @@ const resolvers = {
 
           return {user, token}
       },
-      login: async (parent, {username, password}) =>{
+      login: async (parent, {username, password}) => {
           const user = await User.findOne({ username });
           if (!user) {
               throw new AuthenticationError("Incorrect username")

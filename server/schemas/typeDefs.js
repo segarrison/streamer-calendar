@@ -10,7 +10,7 @@ const typeDefs = gql`
     hosted_events:[Events]
   }
 
-  type Events{
+  type Events {
     _id: ID!
     host: String!
     event_name: String!
