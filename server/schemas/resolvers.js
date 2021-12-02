@@ -22,11 +22,12 @@ const resolvers = {
     }
   },
   Mutation: {
-      newUser: async (parent, args) => {
+      addUser: async (parent, args) => {
           const user = await User.create(args);
-          const token = signToken(user);
-
-          return {user, token}
+          // const token = signToken(user);
+        console.log(user);
+          // return {user, token}
+          return {user}
       },
       login: async (parent, {username, password}) =>{
           const user = await User.findOne({ username });
