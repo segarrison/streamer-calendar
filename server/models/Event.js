@@ -33,7 +33,6 @@ const EventSchema = new Schema({
       ref: "User",
     },
   ],
-
   eventCreated: {
     type: Date,
     default: Date.now,
