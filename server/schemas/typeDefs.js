@@ -25,7 +25,8 @@ const typeDefs = gql`
     users: [User]
     user(username: String!): User
     me: User
-    event:[Events]
+    Events:[Events]
+    Events(event_name: String!): Events
   }
 
   type Auth {
