@@ -46,7 +46,7 @@ const { typeDefs, resolvers } = require('./schemas');
 // }
 
 // startApolloServer(typeDefs, resolvers);
-
+const db = require('./config/connection');
 const PORT = process.env.PORT || 3001;
 const app = express();
 
