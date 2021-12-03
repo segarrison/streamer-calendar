@@ -13,8 +13,8 @@ const resolvers = {
       return await Event.find({}).populate('host');
     },
 
-    user : async (parent, { username }) => {
-      return await User.findOne({ username }).populate('events');
+    user : async (parent, { userId }) => {
+      return await User.findOne({ userId }).populate('hosted_events');
     },
       // finds eveents and what is connected to them
     event : async(parent, { EventId }) => {
@@ -48,10 +48,19 @@ const resolvers = {
 
         return event;
       },
-      addEventTest:  async (parent, args) => {
-        const event = await Event.create(args);
-
-        return event;
+      addEventTest:  async (parent, {userId, event_name, num_of_part, event_desc, event_date, event_time}) => {
+        return User.findOneAndUpdate(
+          { _id: userId },
+          {
+            $addToSet: {
+              hosted_events: { event_name, num_of_part, event_desc, event_date, event_time },
+            },
+          },
+          {
+            new: true,
+            runValidators: true,
+          }
+        )
       },
       addParticipants: async (parent, {eventId, userObjectID}) => {
         const event = await Event.findByIdAndUpdate({_id: eventId },
