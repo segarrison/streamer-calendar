@@ -10,7 +10,7 @@ const resolvers = {
     },
       // finds events and what is connected to them
     events : async() => {
-      return await Event.find({})
+      return await Event.find({}).populate('host');
     },
 
     user : async (parent, { username }) => {
@@ -44,6 +44,11 @@ const resolvers = {
            
       },
       addEvent: async (parent, args) => {
+        const event = await Event.create(args);
+
+        return event;
+      },
+      addEventTest:  async (parent, args) => {
         const event = await Event.create(args);
 
         return event;
