@@ -8,6 +8,7 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import Navbar from './components/Navbar';
+import Main from './pages/main'
 // import Main from './pages/main';
 
 const httpLink = createHttpLink({
@@ -33,18 +34,13 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-
-const client = new ApolloClient({
-  uri: '/graphql',
-  cache: new InMemoryCache(),
-});
-
 function App() {
   return (
     <ApolloProvider client={client}>
     <Router>
       <>
         <Navbar />
+        <Main />
         {/* <Main /> */}
         {/* <Switch>
           {/* <Route exact path='/' component={SearchBooks} />

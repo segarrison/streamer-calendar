@@ -30,7 +30,7 @@ export default class StreamerApp extends React.Component {
             selectMirror={true}
             dayMaxEvents={true}
             weekends={this.state.weekendsVisible}
-            initialEvents={INITIAL_EVENTS} // alternatively, use the `events` setting to fetch from a feed
+            // initialEvents={INITIAL_EVENTS} // alternatively, use the `events` setting to fetch from a feed
             select={this.handleDateSelect}
             eventContent={renderEventContent} // custom render function
             eventClick={this.handleEventClick}
@@ -91,7 +91,7 @@ export default class StreamerApp extends React.Component {
 
     if (title) {
       calendarApi.addEvent({
-        id: createEventId(),
+        // id: createEventId(),
         title,
         start: selectInfo.startStr,
         end: selectInfo.endStr,
@@ -101,18 +101,18 @@ export default class StreamerApp extends React.Component {
   }
 
   handleEventClick = (clickInfo) => {
-    if (confirm(`Are you sure you want to delete the event '${clickInfo.event.title}'`)) {
-      clickInfo.event.remove()
+    // if (confirm(`Are you sure you want to delete the event '${clickInfo.event.title}'`)) {
+    //   clickInfo.event.remove()
     }
   }
 
-  handleEvents = (events) => {
-    this.setState({
-      currentEvents: events
-    })
-  }
+  // handleEvents = (events) => {
+  //   this.setState({
+  //     currentEvents: events
+  //   })
+  // }
 
-}
+// }
 
 function renderEventContent(eventInfo) {
   return (
