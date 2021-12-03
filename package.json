@@ -25,7 +25,5 @@
   "devDependencies": {
     "concurrently": "^6.4.0"
   },
-  "dependencies": {
-    "express": "^4.17.1"
-  }
+  "dependencies": {}
 }
