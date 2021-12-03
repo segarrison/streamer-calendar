@@ -21,17 +21,17 @@ const UserSchema = new Schema({
     match: [/.+@.+\..+/, "Please enter a valid e-mail address"],
   },
 
-  userCreated: {
-    type: Date,
-    default: Date.now,
-  },
-
   hosted_events: [
     {
       type: Schema.Types.ObjectId,
       ref: "Event",
     },
   ],
+
+  part_events: [{
+    type: Schema.Types.ObjectId,
+    ref: "Event"
+  }]
 });
 
 UserSchema.pre("save", async function (next) {
