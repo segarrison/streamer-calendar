@@ -14,7 +14,7 @@ const AppNavbar = () => {
     <>
       <Navbar bg='dark' variant='dark' expand='lg'>
         <Container fluid>
-          <Navbar.Brand as={Link} to='/' className='navbarText'>
+          <Navbar.Brand as={Link} to='/' >
             Stream.line
           </Navbar.Brand>
           <Navbar.Toggle aria-controls='navbar' />
