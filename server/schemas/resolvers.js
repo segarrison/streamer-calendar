@@ -16,6 +16,11 @@ const resolvers = {
         .populate({ path: "hosted_events", populate: "participants" });
     },
     //find particpantEvents (by user)
+    participantEvents: async (parent, { userId }) => {
+      return User.findOne({ _id: userId })
+        .populate("part_events")
+        .populate({ path: "part_events", populate: "part_events" });
+    },
 
     // finds eveents and what is connected to them
     // events : async() => {

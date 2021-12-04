@@ -24,6 +24,7 @@ const typeDefs = gql`
   type Query {
     users:[User]
     hostedEvents(userId: ID!): User
+    participantEvents(userId: ID!): User
     events:[Events]
     user:[User]
     event:[Events]
