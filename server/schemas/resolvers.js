@@ -7,8 +7,11 @@ const resolvers = {
     //find all users
     //can't populate the same path like this
     users: async () => {
-      return await User.find({}).populate("hosted_events").populate("part_events").populate({ path: "part_events", populate: "host" })
-      .populate({ path: "part_events", populate: "part_events" });
+      return await User.find({})
+        .populate("hosted_events")
+        .populate("part_events")
+        .populate({ path: "part_events", populate: "host" })
+        .populate({ path: "part_events", populate: "part_events" });
     },
 
     //find hostedEvents (by user)
@@ -21,23 +24,26 @@ const resolvers = {
     //can't populate the same path like this
     participantEvents: async (parent, { userId }) => {
       return User.findOne({ _id: userId })
-        .populate("part_events").populate({ path: "part_events", populate: "host" })
+        .populate("part_events")
+        .populate({ path: "part_events", populate: "host" })
         .populate({ path: "part_events", populate: "part_events" });
     },
 
     // finds eveents and what is connected to them
-    events : async() => {
+    events: async () => {
       return await Event.find({}).populate("host").populate("participants");
     },
 
-    hostedByEvent: async (parent, {userId}) => {
-      data = await Event.find({}).populate("host")
-      user = await User.find({_id: userId})
+    hostedByEvent: async (parent, { userId }) => {
+      data = await Event.find({}).populate("host");
+      user = await User.find({ _id: userId });
       console.log(user);
       console.log(data);
-      return await Event.find({host: { _id: userId }}).populate("participants");
+      return await Event.find({ host: { _id: userId } }).populate(
+        "participants"
+      );
       // return await Event.find({host: username }).populate("participants");
-    }
+    },
 
     // user : async (parent, { username }) => {
     //   return await User.findOne({ username }).populate('events');
@@ -68,17 +74,30 @@ const resolvers = {
       const token = signToken(user);
       return { user, token };
     },
-    addEvent: async (parent, args) =>{
+    addEvent: async (parent, args) => {
       console.log(args);
       userId = args.host;
       console.log(userId);
       const event = await Event.create(args);
       const eventId = event._id;
-      const addHost = await User.findOneAndUpdate({ _id: userId}, { hosted_events: eventId})
-      
-      
+      const eventPart = event.participants;
+      console.log(eventPart);
+      const addHost = await User.findOneAndUpdate(
+        { _id: userId },
+        { hosted_events: eventId }
+      );
+
+      for (let i of eventPart) {
+        console.log(i);
+        const addPart = await User.findOneAndUpdate(
+          { _id: i },
+          { part_events: eventId }
+        );
+        await addPart.save();
+      }
+
       return { event, addHost };
-    }
+    },
     //addParticipants update event with participants one by one and push to participants profiles
     //deleteEvent
     //removeUser (delete user as participant of event)
