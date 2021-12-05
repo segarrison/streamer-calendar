@@ -22,3 +22,8 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const ADD_EVENT = gql`
+  mutation addEventaddEvent($host: ID!, $event_name: String!, $event_desc: String, $event_date: String!, $event_time: String!, $num_of_part: Int!, $participants: [ID!]){
+    addEvent(host: $host, event_name: $event_name, event_desc: $event_desc, event_date: $event_date, event_time: $event_time, num_of_part: $num_of_part, participants: [$participants])
+  }`

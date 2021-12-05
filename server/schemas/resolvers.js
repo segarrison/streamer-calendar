@@ -9,9 +9,10 @@ const resolvers = {
     users: async () => {
       return await User.find({})
         .populate("hosted_events")
+        .populate( { path: "hosted_events", populate: "participants"})
         .populate("part_events")
-        .populate({ path: "part_events", populate: "host" })
-        .populate({ path: "part_events", populate: "part_events" });
+        .populate([{ path: "part_events", populate: "host"},]);
+        // .populate({ path: "part_events", populate: "participants" });
     },
 
     //find hostedEvents (by user)
@@ -25,15 +26,15 @@ const resolvers = {
     participantEvents: async (parent, { userId }) => {
       return User.findOne({ _id: userId })
         .populate("part_events")
-        .populate({ path: "part_events", populate: "host" })
-        .populate({ path: "part_events", populate: "part_events" });
+        .populate({ path: "part_events", populate: "host" });
+        // .populate({ path: "part_events", populate: "participants" });
     },
 
     // finds eveents and what is connected to them
     events: async () => {
       return await Event.find({}).populate("host").populate("participants");
     },
-
+    //this doesn't work
     hostedByEvent: async (parent, { userId }) => {
       data = await Event.find({}).populate("host");
       user = await User.find({ _id: userId });
@@ -98,7 +99,7 @@ const resolvers = {
 
       return { event, addHost };
     },
-    //addParticipants update event with participants one by one and push to participants profiles
+
     //deleteEvent
     //removeUser (delete user as participant of event)
   },

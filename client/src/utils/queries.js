@@ -1,6 +1,6 @@
 import gql from '@apollo/client';
 
-
+//currently doesn't exist in back end (add part_events?)
 export const GET_ME = gql`
 {
     me {
