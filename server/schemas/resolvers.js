@@ -5,6 +5,7 @@ const { signToken } = require("../utils/auth");
 const resolvers = {
   Query: {
     //find all users
+    //can't populate the same path like this
     users: async () => {
       return await User.find({}).populate("hosted_events").populate("part_events").populate({ path: "part_events", populate: "host" })
       .populate({ path: "part_events", populate: "part_events" });
@@ -17,6 +18,7 @@ const resolvers = {
         .populate({ path: "hosted_events", populate: "participants" });
     },
     //find particpantEvents (by user)
+    //can't populate the same path like this
     participantEvents: async (parent, { userId }) => {
       return User.findOne({ _id: userId })
         .populate("part_events").populate({ path: "part_events", populate: "host" })
@@ -68,12 +70,16 @@ const resolvers = {
     },
     addEvent: async (parent, args) =>{
       console.log(args);
-      userId = args.id;
-      const event = await Event.create(args).then(({_id}) => User.findOneAndUpdate({ where: { _id: userId}}, { $push: { hosted_events: _id }}, {new:true}));
+      userId = args.host;
+      console.log(userId);
+      const event = await Event.create(args);
+      const eventId = event._id;
+      const addHost = await User.findOneAndUpdate({ _id: userId}, { hosted_events: eventId})
       
       
-      return { event };
+      return { event, addHost };
     }
+    //addParticipants update event with participants one by one and push to participants profiles
     //deleteEvent
     //removeUser (delete user as participant of event)
   },
