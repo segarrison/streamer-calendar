@@ -84,14 +84,14 @@ const resolvers = {
       console.log(eventPart);
       const addHost = await User.findOneAndUpdate(
         { _id: userId },
-        { hosted_events: eventId }
+        { $push: { hosted_events: [eventId] } }
       );
 
       for (let i of eventPart) {
         console.log(i);
         const addPart = await User.findOneAndUpdate(
           { _id: i },
-          { part_events: eventId }
+          { $push: { part_events: [eventId] } }
         );
         await addPart.save();
       }
