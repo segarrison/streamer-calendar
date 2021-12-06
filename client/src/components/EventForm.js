@@ -11,12 +11,18 @@ import { ADD_EVENT } from "../utils/mutations";
 import { USERS } from "../utils/queries";
 
 export default function FormModal(props) {
+  const part = [];
   const [show, setShow] = useState(false);
   const [event_name, setEvent_name] = useState("");
   const [event_desc, setEvent_desc] = useState("");
   const [event_date, setEvent_date] = useState("");
   const [event_time, setEvent_time] = useState("");
-  const [participants, setParticipants] = useState("");
+  const [num_of_part, setNum_of_part] = useState("")
+  const [participants, setParticipants] = useState(part);
+  const [participants1, setParticipants1] = useState("");
+  const [participants2, setParticipants2] = useState("");
+  const [participants3, setParticipants3] = useState("");
+  const [participants4, setParticipants4] = useState("");
 
   const [addEvent, { error }] = useMutation(ADD_EVENT);
 
@@ -27,31 +33,15 @@ export default function FormModal(props) {
   if (loading){
     return <div>still loading</div>
   }
-  //TODO:
-  //1. Need to capture logged in user id to pass as host id on form submit
-  //2. Need to create function that generates drop down for participants (tentative below, no idea if works since no user query connected)
-  //2b. do we want one drop down where user can select multiple participants, or multiple dropdowns where use can add one?
-  //3. Need to capture participants for submit
-  //4. Need to fix handleSubmit for apollo/graphql
-
-  // function userDropdowns(users, participants) {
-  //   const mappedUsers = users.map(user => {
-  //     const selected = participants.find(participants => participants === user._id) ? true: false;
-  //     return <option value={user._id} selected={selected}>{user.username}</option>;
-  //   });
-  //   return mappedUsers;
-  // }
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("hitting save");
-    // need to get the data/call addEvent in a try because async
-    // try{}
-    // props.onSubmit({
-    //   event_name: event_name,
-    //   event_desc: event_desc,
-    //   event_date: event_date,
-    //   event_time: event_time,
-    // });
+    console.log(participants1);
+    const holdPlease = [participants1, participants2, participants3, participants4]
+    console.log(holdPlease);
+    setParticipants( part => [...part, participants1, participants2, participants3, participants4]);
+    console.log(participants);
     try {
       const { data } = await addEvent({
         variables: {
@@ -60,11 +50,8 @@ export default function FormModal(props) {
           event_desc: event_desc,
           event_date: event_date,
           event_time: event_time,
-          num_of_part: 2,
-          participants: [
-            "61aa8a5afbec4c856c02202d",
-            "61aa83eebc20d38fb89a3d0e",
-          ],
+          num_of_part: 4,
+          participants: participants,
         },
       });
       console.log(data);
@@ -75,6 +62,7 @@ export default function FormModal(props) {
     setEvent_desc("");
     setEvent_date("");
     setEvent_time("");
+    
   };
 
   const handleChange = (e) => {
@@ -88,6 +76,16 @@ export default function FormModal(props) {
         return setEvent_date(value);
       case "event_time":
         return setEvent_time(value);
+      // case "num_of_part":
+      //   return setNum_of_part(value);
+      case "participants1":
+        return setParticipants1(value);
+      case "participants2":
+          return setParticipants2(value);
+      case "participants3":
+            return setParticipants3(value);
+      case "participants4":
+              return setParticipants4(value);
     }
   };
 
@@ -117,14 +115,72 @@ export default function FormModal(props) {
                   onChange={handleChange}
                 />
               </div>
-
+              {/* <div className="form-group">
+                <label htmlFor="num_of_part">Number of Participants:</label>
+                <select className="form-control" id="num_of_part" onChange={handleChange} value={num_of_part} name="num_of_part">
+                  <option value = "1">1</option>
+                  <option value = "2">2</option>
+                  <option value = "3">3</option>
+                  <option value ="4 ">4</option>
+                  </select>
+              </div> */}
               <div className="form-group">
                 <label htmlFor="exampleFormControlSelect2">Participants</label>
                 <select
                   multiple
                   className="form-control"
                   id="exampleFormControlSelect2"
+                  name="participants1"
                   onChange={handleChange}
+                  value={participants1}
+                >
+                  {users.map((user) => (
+                    <option value={user._id}>{user.username}</option>
+                  ))}
+                  {/* {userDropdowns(props.users)} */}
+                </select>
+              </div>
+              <div className="form-group">
+                <label htmlFor="exampleFormControlSelect2">Participants</label>
+                <select
+                  multiple
+                  className="form-control"
+                  id="exampleFormControlSelect2"
+                  name="participants2"
+                  onChange={handleChange}
+                  value={participants2}
+                >
+                  {users.map((user) => (
+                    <option value={user._id}>{user.username}</option>
+                  ))}
+                  {/* {userDropdowns(props.users)} */}
+                </select>
+              </div>
+              <div className="form-group">
+                <label htmlFor="exampleFormControlSelect2">Participants</label>
+                <select
+                  multiple
+                  className="form-control"
+                  id="exampleFormControlSelect2"
+                  name="participants3"
+                  onChange={handleChange}
+                  value={participants3}
+                >
+                  {users.map((user) => (
+                    <option value={user._id}>{user.username}</option>
+                  ))}
+                  {/* {userDropdowns(props.users)} */}
+                </select>
+              </div>
+              <div className="form-group">
+                <label htmlFor="exampleFormControlSelect2">Participants</label>
+                <select
+                  multiple
+                  className="form-control"
+                  id="exampleFormControlSelect2"
+                  name="participants4"
+                  onChange={handleChange}
+                  value={participants4}
                 >
                   {users.map((user) => (
                     <option value={user._id}>{user.username}</option>
