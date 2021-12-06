@@ -73,6 +73,7 @@ const resolvers = {
       }
 
       const token = signToken(user);
+      console.log(user);
       return { user, token };
     },
     addEvent: async (parent, args) => {

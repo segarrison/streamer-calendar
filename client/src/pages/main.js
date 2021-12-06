@@ -19,7 +19,7 @@ export default class StreamerApp extends React.Component {
   render() {
     return (
       <>
-      <EventForm />
+      {/* <EventForm /> */}
       <div className='streamer-app'>
         {this.renderSidebar()}
         <div className='streamer-app-main'>

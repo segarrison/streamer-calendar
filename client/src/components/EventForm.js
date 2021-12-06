@@ -6,8 +6,9 @@ import ModalTitle from "react-bootstrap/ModalTitle";
 import ModalFooter from "react-bootstrap/ModalFooter";
 import ModalBody from "react-bootstrap/ModalBody";
 import Button from "react-bootstrap/Button";
-import { useMutation } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { ADD_EVENT } from "../utils/mutations";
+import { USERS } from "../utils/queries";
 
 export default function FormModal(props) {
   const [show, setShow] = useState(false);
@@ -16,9 +17,11 @@ export default function FormModal(props) {
   const [event_date, setEvent_date] = useState("");
   const [event_time, setEvent_time] = useState("");
 
-  const [addEvent, {error}] = useMutation(ADD_EVENT)
+  const [addEvent, { error }] = useMutation(ADD_EVENT);
 
-  //TODO: 
+  const { data } = useQuery(USERS);
+  console.log(data);
+  //TODO:
   //1. Need to capture logged in user id to pass as host id on form submit
   //2. Need to create function that generates drop down for participants (tentative below, no idea if works since no user query connected)
   //2b. do we want one drop down where user can select multiple participants, or multiple dropdowns where use can add one?
@@ -34,16 +37,34 @@ export default function FormModal(props) {
   // }
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+    console.log("hitting save");
     // need to get the data/call addEvent in a try because async
     // try{}
-    props.onSubmit({
-      event_name: event_name,
-      event_desc: event_desc,
-      event_date: event_date,
-      event_time: event_time,
-    });
-
+    // props.onSubmit({
+    //   event_name: event_name,
+    //   event_desc: event_desc,
+    //   event_date: event_date,
+    //   event_time: event_time,
+    // });
+    try {
+      const { data } = await addEvent({
+        variables: {
+          host: localStorage.getItem("user"),
+          event_name: event_name,
+          event_desc: event_desc,
+          event_date: event_date,
+          event_time: event_time,
+          num_of_part: 2,
+          participants: [
+            "61aa8a5afbec4c856c02202d",
+            "61aa83eebc20d38fb89a3d0e",
+          ],
+        },
+      });
+      console.log(data);
+    } catch (err) {
+      console.error(err);
+    }
     setEvent_name("");
     setEvent_desc("");
     setEvent_date("");
@@ -53,15 +74,14 @@ export default function FormModal(props) {
   const handleChange = (e) => {
     const { name, value } = e.target;
     switch (name) {
-        case 'event_name':
-           return setEvent_name(value);
-        case 'event_desc':
-            return setEvent_desc(value);
-        case 'event_date':
-            return setEvent_date(value);
-        case 'event_time':
-            return setEvent_time(value);
-
+      case "event_name":
+        return setEvent_name(value);
+      case "event_desc":
+        return setEvent_desc(value);
+      case "event_date":
+        return setEvent_date(value);
+      case "event_time":
+        return setEvent_time(value);
     }
   };
 
@@ -78,7 +98,7 @@ export default function FormModal(props) {
             </ModalTitle>
           </ModalHeader>
           <ModalBody>
-            <form {...props} autocomplete="off">
+            <form {...props} autoComplete="off">
               <div className="form-group">
                 <label htmlFor="event_name">Event Name</label>
                 <input
@@ -92,14 +112,17 @@ export default function FormModal(props) {
                 />
               </div>
 
-              <div class="form-group">
-                <label for="exampleFormControlSelect2">Participants</label>
+              <div className="form-group">
+                <label htmlFor="exampleFormControlSelect2">Participants</label>
                 <select
                   multiple
-                  class="form-control"
+                  className="form-control"
                   id="exampleFormControlSelect2"
                   onChange={handleChange}
                 >
+                  {data.users.map((user) => (
+                    <option value={user._id}>{user.username}</option>
+                  ))}
                   {/* {userDropdowns(props.users)} */}
                 </select>
               </div>
@@ -142,7 +165,11 @@ export default function FormModal(props) {
             <Button onClick={() => setShow(false)} variant="secondary">
               Close
             </Button>
-            <Button onClick={handleSubmit} variant="primary" class="newEvent">
+            <Button
+              onClick={handleSubmit}
+              variant="primary"
+              className="newEvent"
+            >
               Save Event
             </Button>
           </ModalFooter>
