@@ -16,11 +16,17 @@ export default function FormModal(props) {
   const [event_desc, setEvent_desc] = useState("");
   const [event_date, setEvent_date] = useState("");
   const [event_time, setEvent_time] = useState("");
+  const [participants, setParticipants] = useState("");
 
   const [addEvent, { error }] = useMutation(ADD_EVENT);
 
-  const { data } = useQuery(USERS);
+  const { data, loading } = useQuery(USERS);
   console.log(data);
+
+  const users = data?.users || [];
+  if (loading){
+    return <div>still loading</div>
+  }
   //TODO:
   //1. Need to capture logged in user id to pass as host id on form submit
   //2. Need to create function that generates drop down for participants (tentative below, no idea if works since no user query connected)
@@ -120,9 +126,9 @@ export default function FormModal(props) {
                   id="exampleFormControlSelect2"
                   onChange={handleChange}
                 >
-                  {/* {data.participants.map((user) => (
+                  {users.map((user) => (
                     <option value={user._id}>{user.username}</option>
-                  ))} */}
+                  ))} 
                   {/* {userDropdowns(props.users)} */}
                 </select>
               </div>
