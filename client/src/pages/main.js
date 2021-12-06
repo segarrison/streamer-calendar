@@ -17,9 +17,10 @@ export default class StreamerApp extends React.Component {
   render() {
     return (
           <div class="row">
+            <div class="col-sm-1"></div>
             <div className='streamer-app-sidebar' class="col-sm-3">
                     <div className='streamer-app-sidebar-section'>
-                      <h2>Sidebar</h2>
+                      <h2 style={{color: "#6441a5"}}>Upcoming Events</h2>
                       <ul>
                         <li>item 1</li>
                         <li>item 2</li>
@@ -43,7 +44,7 @@ export default class StreamerApp extends React.Component {
                       </ul>
                     </div>
             </div>
-            <div class="col-sm-8">
+            <div class="col-sm-7">
               <div className='streamer-app' >
               {/* {this.renderSidebar()} */}
                   <div className='streamer-app-main'>
