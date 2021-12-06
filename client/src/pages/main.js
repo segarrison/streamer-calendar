@@ -3,7 +3,8 @@ import FullCalendar, { formatDate } from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
-import "./main.css";
+import "../components/navbar.css";
+
 // import { INITIAL_EVENTS, createEventId } from './event-utils'
 
 export default class StreamerApp extends React.Component {
@@ -15,70 +16,100 @@ export default class StreamerApp extends React.Component {
 
   render() {
     return (
-      <div className="w-75 d-inline-block">
-      <div className='streamer-app'>
-        {this.renderSidebar()}
-        <div className='streamer-app-main'>
-          <FullCalendar
-            plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-            headerToolbar={{
-              left: 'prev,next today',
-              center: 'title',
-              right: 'dayGridMonth,timeGridWeek,timeGridDay'
-            }}
-            initialView='dayGridMonth'
-            editable={true}
-            selectable={true}
-            selectMirror={true}
-            dayMaxEvents={true}
-            weekends={this.state.weekendsVisible}
-            // initialEvents={INITIAL_EVENTS} // alternatively, use the `events` setting to fetch from a feed
-            select={this.handleDateSelect}
-            // eventContent={renderEventContent} // custom render function
-            eventClick={this.handleEventClick}
-            eventsSet={this.handleEvents} // called after events are initialized/added/changed/removed
-            /* you can update a remote database when these fire:
-            eventAdd={function(){}}
-            eventChange={function(){}}
-            eventRemove={function(){}}
-            */
-          />
-        </div>
-      </div>
+      <div class="row">
+                <div class="col-sm-3">
+                  <div className='streamer-app-sidebar'>
+                    <div className='streamer-app-sidebar-section'>
+                      <h2>Sidebar</h2>
+                      <ul>
+                        <li>item 1</li>
+                        <li>item 2</li>
+                        <li>item 3</li>
+                      </ul>
+                    </div>
+                    <div className='streamer-app-sidebar-section'>
+                      <label>
+                        <input
+                          type='checkbox'
+                          checked={this.state.weekendsVisible}
+                          onChange={this.handleWeekendsToggle}
+                        ></input>
+                        toggle weekends
+                      </label>
+                    </div>
+                    <div className='streamer-app-sidebar-section'>
+                      <h2>All Events ({this.state.currentEvents.length})</h2>
+                      <ul>
+                        {/* {this.state.currentEvents.map(renderSidebarEvent)} */}
+                      </ul>
+                    </div>
+                </div>
+              <div className='streamer-app' class="col-sm-9">
+              {/* {this.renderSidebar()} */}
+                  <div className='streamer-app-main'>
+                      <FullCalendar
+                      plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+                      headerToolbar={{
+                        left: 'prev,next today',
+                        center: 'title',
+                        right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                      }}
+                      initialView='dayGridMonth'
+                      editable={true}
+                      selectable={true}
+                      selectMirror={true}
+                      dayMaxEvents={true}
+                      weekends={this.state.weekendsVisible}
+                      // initialEvents={INITIAL_EVENTS} // alternatively, use the `events` setting to fetch from a feed
+                      select={this.handleDateSelect}
+                      // eventContent={renderEventContent} // custom render function
+                      eventClick={this.handleEventClick}
+                      eventsSet={this.handleEvents} // called after events are initialized/added/changed/removed
+                      /* you can update a remote database when these fire:
+                      eventAdd={function(){}}
+                      eventChange={function(){}}
+                      eventRemove={function(){}}
+                      */
+                      />
+                  </div>
+              </div>
+          </div>
       </div>
     )
   }
 
-  renderSidebar() {
-    return (
-      <div className='streamer-app-sidebar sidebar'>
-        <div className='streamer-app-sidebar-section'>
-          <h2>Sidebar</h2>
-          <ul>
-            <li>item 1</li>
-            <li>item 2</li>
-            <li>item 3</li>
-          </ul>
-        </div>
-        <div className='streamer-app-sidebar-section'>
-          <label>
-            <input
-              type='checkbox'
-              checked={this.state.weekendsVisible}
-              onChange={this.handleWeekendsToggle}
-            ></input>
-            toggle weekends
-          </label>
-        </div>
-        <div className='streamer-app-sidebar-section'>
-          <h2>All Events ({this.state.currentEvents.length})</h2>
-          <ul>
-            {/* {this.state.currentEvents.map(renderSidebarEvent)} */}
-          </ul>
-        </div>
-      </div>
-    )
-  }
+  // renderSidebar() {
+  //   return (
+  //     <div className='sidebar'>
+  //       <div className='streamer-app-sidebar'>
+  //         <div className='streamer-app-sidebar-section'>
+  //           <h2>Sidebar</h2>
+  //           <ul>
+  //             <li>item 1</li>
+  //             <li>item 2</li>
+  //             <li>item 3</li>
+  //           </ul>
+  //         </div>
+  //         <div className='streamer-app-sidebar-section'>
+  //           <label>
+  //             <input
+  //               type='checkbox'
+  //               checked={this.state.weekendsVisible}
+  //               onChange={this.handleWeekendsToggle}
+  //             ></input>
+  //             toggle weekends
+  //           </label>
+  //         </div>
+  //         <div className='streamer-app-sidebar-section'>
+  //           <h2>All Events ({this.state.currentEvents.length})</h2>
+  //           <ul>
+  //             {/* {this.state.currentEvents.map(renderSidebarEvent)} */}
+  //           </ul>
+  //         </div>
+  //       </div>
+  //     </div>
+  //   )
+  // }
 
   handleWeekendsToggle = () => {
     this.setState({

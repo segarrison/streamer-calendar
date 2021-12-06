@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Navbar, Nav, Container, Modal, Tab } from 'react-bootstrap';
 import SignUpForm from './Signup';
 import LoginForm from './Login';
-import "./navbar.css";
+import "../components/navbar.css";
 
 import Auth from '../utils/auth';
 
@@ -13,9 +13,9 @@ const AppNavbar = () => {
 
   return (
     <>
-      <Navbar bg='dark' variant='dark' expand='lg'>
+      <Navbar bg='dark' variant='dark' expand='lg' className='navText'>
         <Container fluid>
-          <Navbar.Brand as={Link} to='/' id='navbarText'>
+          <Navbar.Brand as={Link} to='/' style={{color: "#6441a5"}}>
             Stream.line
           </Navbar.Brand>
           <Navbar.Toggle aria-controls='navbar' />
@@ -30,10 +30,10 @@ const AppNavbar = () => {
                   {/* <Nav.Link as={Link} to='/somewhere else'> */}
                     {/* something cool!  */}
                   {/* </Nav.Link> */}
-                  <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
+                  <Nav.Link onClick={Auth.logout} style={{color: "#6441a5"}}>Logout</Nav.Link>
                 </>
               ) : (
-                <Nav.Link onClick={() => setShowModal(true)}>Login/Sign Up</Nav.Link>
+                <Nav.Link onClick={() => setShowModal(true)} style={{color: "#6441a5"}}>Login/Sign Up</Nav.Link>
               )}
             </Nav>
           </Navbar.Collapse>
@@ -72,7 +72,7 @@ const AppNavbar = () => {
         </Tab.Container>
       </Modal>
     </>
-  );
+  ); 
 };
 
 export default AppNavbar;
