@@ -3,7 +3,7 @@ import FullCalendar, { formatDate } from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
-import "../components/navbar.css";
+import '../components/navbar.css';
 
 // import { INITIAL_EVENTS, createEventId } from './event-utils'
 
@@ -43,7 +43,7 @@ export default class StreamerApp extends React.Component {
                       </ul>
                     </div>
             </div>
-            <div class="col-sm-9">
+            <div class="col-sm-8">
               <div className='streamer-app' >
               {/* {this.renderSidebar()} */}
                   <div className='streamer-app-main'>

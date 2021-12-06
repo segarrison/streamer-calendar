@@ -29,6 +29,10 @@
   color: #0e9dd9;
 }
 
+.font-face-gm {
+  font-family: "Audiowave";
+ }
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
