@@ -44,7 +44,8 @@ export default class StreamerApp extends React.Component {
                       </ul>
                     </div>
                 </div>
-              <div className='streamer-app' class="col-sm-9">
+            <div class="col-sm-9">
+              <div className='streamer-app' >
               {/* {this.renderSidebar()} */}
                   <div className='streamer-app-main'>
                       <FullCalendar
@@ -73,6 +74,7 @@ export default class StreamerApp extends React.Component {
                       />
                   </div>
               </div>
+          </div>
           </div>
       </div>
     )
