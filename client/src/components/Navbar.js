@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Navbar, Nav, Container, Modal, Tab } from 'react-bootstrap';
 import SignUpForm from './Signup';
 import LoginForm from './Login';
+import "./navbar.css";
 
 import Auth from '../utils/auth';
 
@@ -14,7 +15,7 @@ const AppNavbar = () => {
     <>
       <Navbar bg='dark' variant='dark' expand='lg'>
         <Container fluid>
-          <Navbar.Brand as={Link} to='/' >
+          <Navbar.Brand as={Link} to='/' id='navbarText'>
             Stream.line
           </Navbar.Brand>
           <Navbar.Toggle aria-controls='navbar' />

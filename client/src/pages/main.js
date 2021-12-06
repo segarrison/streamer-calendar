@@ -3,6 +3,7 @@ import FullCalendar, { formatDate } from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
+import "./main.css";
 // import { INITIAL_EVENTS, createEventId } from './event-utils'
 
 export default class StreamerApp extends React.Component {
@@ -14,6 +15,7 @@ export default class StreamerApp extends React.Component {
 
   render() {
     return (
+      <div className="w-75 d-inline-block">
       <div className='streamer-app'>
         {this.renderSidebar()}
         <div className='streamer-app-main'>
@@ -32,7 +34,7 @@ export default class StreamerApp extends React.Component {
             weekends={this.state.weekendsVisible}
             // initialEvents={INITIAL_EVENTS} // alternatively, use the `events` setting to fetch from a feed
             select={this.handleDateSelect}
-            eventContent={renderEventContent} // custom render function
+            // eventContent={renderEventContent} // custom render function
             eventClick={this.handleEventClick}
             eventsSet={this.handleEvents} // called after events are initialized/added/changed/removed
             /* you can update a remote database when these fire:
@@ -43,12 +45,13 @@ export default class StreamerApp extends React.Component {
           />
         </div>
       </div>
+      </div>
     )
   }
 
   renderSidebar() {
     return (
-      <div className='streamer-app-sidebar'>
+      <div className='streamer-app-sidebar sidebar'>
         <div className='streamer-app-sidebar-section'>
           <h2>Sidebar</h2>
           <ul>
@@ -70,7 +73,7 @@ export default class StreamerApp extends React.Component {
         <div className='streamer-app-sidebar-section'>
           <h2>All Events ({this.state.currentEvents.length})</h2>
           <ul>
-            {this.state.currentEvents.map(renderSidebarEvent)}
+            {/* {this.state.currentEvents.map(renderSidebarEvent)} */}
           </ul>
         </div>
       </div>
@@ -114,20 +117,14 @@ export default class StreamerApp extends React.Component {
 
 // }
 
-function renderEventContent(eventInfo) {
-  return (
-    <>
-      <b>{eventInfo.timeText}</b>
-      <i>{eventInfo.event.title}</i>
-    </>
-  )
-}
+// function renderEventContent(eventInfo) {
+//   return (
+//     <>
+//       <b>{eventInfo.timeText}</b>
+//       <i>{eventInfo.event.title}</i>
+//     </>
+//   )
+// }
 
-function renderSidebarEvent(event) {
-  return (
-    <li key={event.id}>
-      <b>{formatDate(event.start, {year: 'numeric', month: 'short', day: 'numeric'})}</b>
-      <i>{event.title}</i>
-    </li>
-  )
+// 
 }
