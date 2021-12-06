@@ -6,11 +6,11 @@ const typeDefs = gql`
     username: String
     password: String
     email: String
-    hosted_events:[Events]
-    part_events: [Events]
+    hosted_events:[Event]
+    part_events: [Event]
   }
 
-  type Events{
+  type Event{
     _id: ID
     host: User
     event_name: String
@@ -22,11 +22,13 @@ const typeDefs = gql`
   }
 
   type Query {
-    users: [User]
-    user(username: String!): User
-    me: User
-    Events:[Events]
-    Events(event_name: String!): Events
+    users:[User]
+    hostedEvents(userId: ID!): User
+    participantEvents(userId: ID!): User
+    events:[Event]
+    hostedByEvent(userId: ID!): Event
+    user:[User]
+    event:[Event]
   }
 
   type Auth {
@@ -37,6 +39,7 @@ const typeDefs = gql`
   type Mutation {
       addUser(username: String!, password: String!, email: String!): Auth
       login(username: String!, password: String!): Auth
+      addEvent(host: ID!, event_name: String!, event_desc: String, event_date: String!, event_time: String!, num_of_part: Int!, participants: [ID!]): Event
 
   }
 `;
