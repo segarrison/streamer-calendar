@@ -9,7 +9,7 @@ import {
 import { setContext } from '@apollo/client/link/context';
 import Navbar from './components/Navbar';
 import Main from './pages/main';
-import './components/navbar.css';
+import EventForm from './components/EventForm';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -40,10 +40,12 @@ function App() {
     <Router>
       <>
         <Navbar />
+        <EventForm />
         <Main />
+
         {/* <Switch>
-          {/* <Route exact path='/' component={SearchBooks} />
-          <Route exact path='/saved' component={SavedBooks} />
+          {/* <Route exact path='/' component={} />
+          <Route exact path='/saved' component={} />
           <Route render={() => <h1 className='display-2'>Wrong page!</h1>} /> */}
         {/* </Switch> */} 
       </>

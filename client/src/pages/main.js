@@ -1,13 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import FullCalendar, { formatDate } from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
-import '../components/navbar.css';
-
+import EventForm from '../components/EventForm';
 // import { INITIAL_EVENTS, createEventId } from './event-utils'
 
+
+
 export default class StreamerApp extends React.Component {
+ 
 
   state = {
     weekendsVisible: true,
