@@ -9,6 +9,7 @@ import {
 import { setContext } from '@apollo/client/link/context';
 import Navbar from './components/Navbar';
 import Main from './pages/main';
+import NewMain from './pages/newMain';
 import EventForm from './components/EventForm';
 
 const httpLink = createHttpLink({
@@ -42,7 +43,8 @@ function App() {
       <>
         <Navbar />
         <EventForm />
-        <Main />
+        {/* <Main /> */}
+        <NewMain/>
 
         {/* <Switch>
           {/* <Route exact path='/' component={} />

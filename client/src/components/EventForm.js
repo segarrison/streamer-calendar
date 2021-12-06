@@ -120,9 +120,9 @@ export default function FormModal(props) {
                   id="exampleFormControlSelect2"
                   onChange={handleChange}
                 >
-                  {data.users.map((user) => (
+                  {/* {data.participants.map((user) => (
                     <option value={user._id}>{user.username}</option>
-                  ))}
+                  ))} */}
                   {/* {userDropdowns(props.users)} */}
                 </select>
               </div>
