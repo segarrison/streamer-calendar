@@ -29,8 +29,8 @@ const LoginForm = () => {
 
     try {
       const { data } = await login({ variables: {...userFormData}});
-      console.log(data);
-
+      console.log(data.login.user._id);
+      localStorage.setItem("user", data.login.user._id)
       Auth.login(data.login.token)
     } catch (err){
         console.error(err);
