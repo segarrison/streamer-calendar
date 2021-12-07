@@ -16,26 +16,26 @@ in the root folder.
 
 ## Technologies
 
--MongoDB
--Mongoose
--Express
--React
--Node.js
--GraphQL
--Apollo Server
--Bcrypt
--JWT
--Apollo Client
--Bootstrap
--FullCalendar
--MongoDB Atlas for Heroku deployment
+- MongoDB
+- Mongoose
+- Express
+- React
+- Node.js
+- GraphQL
+- Apollo Server
+- Bcrypt
+- JWT
+- Apollo Client
+- Bootstrap
+- FullCalendar
+- MongoDB Atlas for Heroku deployment
 
 ## Contributors
 
--[Aleph Cadena](https://github.com/AlephCadena)
--[Nate Skidmore](https://github.com/nskidmore7)
--[Omar Ramirez](https://github.com/BossyLemon0)
--[Sarah Garrison](https://github.com/segarrison)
+- [Aleph Cadena](https://github.com/AlephCadena)
+- [Nate Skidmore](https://github.com/nskidmore7)
+- [Omar Ramirez](https://github.com/BossyLemon0)
+- [Sarah Garrison](https://github.com/segarrison)
 
 ## Thanks
 
