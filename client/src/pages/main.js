@@ -39,9 +39,6 @@ export default class StreamerApp extends React.Component {
                     <div className='streamer-app-sidebar-section'>
                       <h2 style={mainStyle.font}>Upcoming Events</h2>
                       <ul>
-                        <li>item 1</li>
-                        <li>item 2</li>
-                        <li>item 3</li>
                       </ul>
                     </div>
                     <div className='streamer-app-sidebar-section'>
