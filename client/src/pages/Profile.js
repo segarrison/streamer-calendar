@@ -21,23 +21,25 @@ const Profile = () => {
       <div className="flex-row justify-center">
         <div
           className="col-12 col-md-10 mb-3 p-3"
-          style={{ border: "1px dotted #1a1a1a" }}
+          
         >
           <EventForm />
         </div>
-        <div className="col-12 col-md-8 mb-3">
+        <div className="row justify-center">
+        <div className="col-4 mb-3">
           {loading ? (
             <div>Loading...</div>
           ) : (
             <HostList user={user} title="Events You're Hosting:" />
           )}
         </div>
-        <div className="col-12 col-md-8 mb-3">
+        <div className="col-4 mb-3">
           {loading ? (
             <div>Loading...</div>
           ) : (
             <PartList user={user} title="Events You're Participating In:" />
           )}
+        </div>
         </div>
       </div>
     </main>

@@ -5,6 +5,7 @@ import ModalHeader from "react-bootstrap/ModalHeader";
 import ModalTitle from "react-bootstrap/ModalTitle";
 import ModalFooter from "react-bootstrap/ModalFooter";
 import ModalBody from "react-bootstrap/ModalBody";
+import Form from "react-bootstrap/form";
 import Button from "react-bootstrap/Button";
 import { useMutation, useQuery } from "@apollo/client";
 import { ADD_EVENT } from "../utils/mutations";
@@ -124,61 +125,58 @@ export default function FormModal(props) {
                   onChange={handleChange}
                 />
               </div>
-              <div className="form-group">
+              <div>
                 <label htmlFor="exampleFormControlSelect2">Participants</label>
-                <select
-                  className="form-control"
+                <Form.Select
                   id="exampleFormControlSelect2"
                   name="participants1"
                   onChange={handleChangeP1}
-                  value={participants1}
+                  // value={participants1}
                 >
+                  <option>Select a user:</option>
                   {users.map((user) => (
                     <option value={user._id}>{user.username}</option>
                   ))}
-                </select>
+                </Form.Select>
               </div>
-              <div className="form-group">
+              <div>
                 <label htmlFor="exampleFormControlSelect2">Participants</label>
-                <select
-                  className="form-control"
+                <Form.Select
                   id="exampleFormControlSelect2"
                   name="participants2"
                   onChange={handleChangeP2}
-                  value={participants2}
                 >
+                  <option>Select a user:</option>
                   {users.map((user) => (
                     <option value={user._id}>{user.username}</option>
                   ))}
-                </select>
+                </Form.Select>
               </div>
-              <div className="form-group">
+              <div>
                 <label htmlFor="exampleFormControlSelect2">Participants</label>
-                <select
-                  className="form-control"
+                <Form.Select
                   id="exampleFormControlSelect2"
                   name="participants3"
                   onChange={handleChangeP3}
-                  value={participants3}
                 >
+                  <option>Select a user:</option>
                   {users.map((user) => (
                     <option value={user._id}>{user.username}</option>
                   ))}
-                </select>
+                </Form.Select>
               </div>
-              <div className="form-group">
+              <div>
                 <label htmlFor="exampleFormControlSelect2">Participants</label>
-                <select
-                  className="form-control"
+                <Form.Select
                   id="exampleFormControlSelect2"
                   name="participants4"
                   onChange={handleChangeP4}
-                  value={participants4}
                 >
+                  <option>Select a user:</option>
                   {users.map((user) => (
                     <option value={user._id}>{user.username}</option>
                   ))}
-                </select>
+                </Form.Select>
               </div>
               <div className="form-group">
                 <label htmlFor="event_date">Date</label>
