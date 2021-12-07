@@ -10,10 +10,11 @@ const HostedCard = ()=>{
         variables: { userId: localStorage.getItem("user")}
     } )
     console.log(HostedData)
+    console.log(localStorage.getItem("user"))
     const [part_overflow, setPart_overflow] = useState(1);
     let isPart = HostedData?.hostedEvents || 1;
     // hard coded joined events 
-    // isPart = ["pubg 8am 12/15/21","apex 9:30pm 12/15/21","D&D 11:00am 12/15/21","tf2 championship 10pm 12/15/21","deadcells idk the time","rainbow 6","wiisports","ark","halo infinite","wow","wow"]
+    isPart = ["pubg 8am 12/15/21","apex 9:30pm 12/15/21","D&D 11:00am 12/15/21","tf2 championship 10pm 12/15/21","deadcells idk the time","rainbow 6","wiisports","ark","halo infinite","wow","wow"]
     if (loading){
       return <div>still loading</div>
     }

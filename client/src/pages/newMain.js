@@ -12,11 +12,11 @@ const NewMain = ()=> {
         <div>
             <Navbar />
             {Auth.loggedIn()? (
-            <>
+            <div>
             <EventForm />
             <MainCards/>
             <ExtraCalanderCard/>
-            </>
+            </div>
             ):(
             <div>Join a stream from some of your favorite genres!</div>)}
 
