@@ -11,3 +11,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@font-face {
+  font-family: "Audiowide", cursive;
+  src: local("Audiowide"),
+   url("./fonts/Audiowide/Audiowide-Regular.ttf") format("truetype");
+  }
