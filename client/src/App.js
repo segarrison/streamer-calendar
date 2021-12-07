@@ -40,7 +40,6 @@ function App() {
     <Router>
       <>
         <Navbar />
-        <EventForm />
         <Main />
 
         {/* <Switch>

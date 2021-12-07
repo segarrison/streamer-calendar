@@ -22,16 +22,24 @@ export default class StreamerApp extends React.Component {
       container: {
         backgroundColor: "#6441a5",
         borderStyle: "solid",
+        borderRadius: "20px",
       },
       font: {
         color: "#0e9dd9",
         fontFamily: "'Audiowide', cursive",
       },
+      calendar: {
+        backgroundColor: "#6441a5",
+        borderStyle: "solid",
+        borderRadius: "20px",
+        fontColor: "#0e9dd9",
+        fontFamily: "'Audiowide', cursive",
+      }
     };
     return (
           <div class="row">
-            <div class="col-sm-1" style={mainStyle.container}></div>
-            <div className='streamer-app-sidebar' class="col-sm-3">
+            <div class="col-sm-1" ></div>
+            <div className='streamer-app-sidebar' class="col-sm-3" style={mainStyle.container}>
                     <div className='streamer-app-sidebar-section'>
                       <h2 style={mainStyle.font}>Upcoming Events</h2>
                       <ul>
@@ -55,10 +63,11 @@ export default class StreamerApp extends React.Component {
                       <ul>
                         {/* {this.state.currentEvents.map(renderSidebarEvent)} */}
                       </ul>
+                      <EventForm />
                     </div>
             </div>
-            <div class="col-sm-7">
-              <div className='streamer-app' >
+            <div class="col-sm-7" >
+              <div className='streamer-app' style={mainStyle.font}>
               {/* {this.renderSidebar()} */}
                   <div className='streamer-app-main'>
                       <FullCalendar
