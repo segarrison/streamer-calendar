@@ -11,14 +11,14 @@ import { ADD_EVENT } from "../utils/mutations";
 import { USERS } from "../utils/queries";
 
 export default function FormModal(props) {
-  const part = [];
+  // const part = [];
   const [show, setShow] = useState(false);
   const [event_name, setEvent_name] = useState("");
   const [event_desc, setEvent_desc] = useState("");
   const [event_date, setEvent_date] = useState("");
   const [event_time, setEvent_time] = useState("");
-  const [num_of_part, setNum_of_part] = useState("")
-  const [participants, setParticipants] = useState(part);
+  const [num_of_part, setNum_of_part] = useState("");
+  const [participants, setParticipants] = useState([]);
   const [participants1, setParticipants1] = useState("");
   const [participants2, setParticipants2] = useState("");
   const [participants3, setParticipants3] = useState("");
@@ -30,19 +30,18 @@ export default function FormModal(props) {
   console.log(data);
 
   const users = data?.users || [];
-  if (loading){
-    return <div>still loading</div>
+  if (loading) {
+    return <div>still loading</div>;
   }
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("hitting save");
-    console.log(participants1);
-    const holdPlease = [participants1, participants2, participants3, participants4]
-    console.log(holdPlease);
-    setParticipants( part => [...part, participants1, participants2, participants3, participants4]);
-    console.log(participants);
+    
+
     try {
+      console.log("hello world");
+      console.log(participants);
       const { data } = await addEvent({
         variables: {
           host: localStorage.getItem("user"),
@@ -62,11 +61,21 @@ export default function FormModal(props) {
     setEvent_desc("");
     setEvent_date("");
     setEvent_time("");
-    
+    setParticipants1("");
+    setParticipants2("");
+    setParticipants3("");
+    setParticipants4("");
+    setParticipants([]);
   };
 
   const handleChange = (e) => {
+
     const { name, value } = e.target;
+    // console.log(participants1);
+    //   const holdPlease = participants1;
+    //   console.log(holdPlease);
+    //   setParticipants((participants) => participants.concat(holdPlease));
+    //   console.log(participants);
     switch (name) {
       case "event_name":
         return setEvent_name(value);
@@ -78,15 +87,41 @@ export default function FormModal(props) {
         return setEvent_time(value);
       // case "num_of_part":
       //   return setNum_of_part(value);
-      case "participants1":
-        return setParticipants1(value);
-      case "participants2":
-          return setParticipants2(value);
-      case "participants3":
-            return setParticipants3(value);
-      case "participants4":
-              return setParticipants4(value);
+      // case "participants1":
+      //   return setParticipants1(value);
+      // case "participants2":
+      //   return setParticipants2(value);
+      // case "participants3":
+      //   return setParticipants3(value);
+      // case "participants4":
+      //   return setParticipants4(value);
     }
+    
+  };
+
+  const handleChangeP1 = (e) => {
+
+    const { name, value } = e.target;
+    return setParticipants((participants) => participants.concat(value));
+
+  };
+  const handleChangeP2 = (e) => {
+
+    const { name, value } = e.target;
+    return setParticipants((participants) => participants.concat(value));
+
+  };
+  const handleChangeP3 = (e) => {
+
+    const { name, value } = e.target;
+    return setParticipants((participants) => participants.concat(value));
+
+  };
+  const handleChangeP4 = (e) => {
+
+    const { name, value } = e.target;
+    return setParticipants((participants) => participants.concat(value));
+
   };
 
   return (
@@ -127,11 +162,10 @@ export default function FormModal(props) {
               <div className="form-group">
                 <label htmlFor="exampleFormControlSelect2">Participants</label>
                 <select
-                  multiple
                   className="form-control"
                   id="exampleFormControlSelect2"
                   name="participants1"
-                  onChange={handleChange}
+                  onChange={handleChangeP1}
                   value={participants1}
                 >
                   {users.map((user) => (
@@ -143,11 +177,10 @@ export default function FormModal(props) {
               <div className="form-group">
                 <label htmlFor="exampleFormControlSelect2">Participants</label>
                 <select
-                  multiple
                   className="form-control"
                   id="exampleFormControlSelect2"
                   name="participants2"
-                  onChange={handleChange}
+                  onChange={handleChangeP2}
                   value={participants2}
                 >
                   {users.map((user) => (
@@ -159,11 +192,10 @@ export default function FormModal(props) {
               <div className="form-group">
                 <label htmlFor="exampleFormControlSelect2">Participants</label>
                 <select
-                  multiple
                   className="form-control"
                   id="exampleFormControlSelect2"
                   name="participants3"
-                  onChange={handleChange}
+                  onChange={handleChangeP3}
                   value={participants3}
                 >
                   {users.map((user) => (
@@ -175,11 +207,10 @@ export default function FormModal(props) {
               <div className="form-group">
                 <label htmlFor="exampleFormControlSelect2">Participants</label>
                 <select
-                  multiple
                   className="form-control"
                   id="exampleFormControlSelect2"
                   name="participants4"
-                  onChange={handleChange}
+                  onChange={handleChangeP4}
                   value={participants4}
                 >
                   {users.map((user) => (
