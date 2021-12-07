@@ -1,14 +1,12 @@
 import React, { useState } from 'react'
 import Navbar from '../components/Navbar';
 import EventForm from '../components/EventForm'
-import Test from '../components/test';
-import Test2 from '../components/test2';
+import MainCards from '../components/MainCards';
+import ExtraCalanderCard from '../components/ExtraCard';
 import Auth from '../utils/auth'
 
 
 const NewMain = ()=> {
-
-const { render, number } = Test();
 
     return(
         <div>
@@ -16,9 +14,8 @@ const { render, number } = Test();
             {Auth.loggedIn()? (
             <>
             <EventForm />
-            {render}
-            <div>{number}</div>
-            <Test2 num ={number}/>
+            <MainCards/>
+            <ExtraCalanderCard/>
             </>
             ):(
             <div>Join a stream from some of your favorite genres!</div>)}
