@@ -1,13 +1,9 @@
 import React from "react";
-// import { useQuery } from "@apollo/client";
-// import { PARTICIPANT_EVENTS } from "../utils/queries";
+
 
 const PartList = ({ user, title }) => {
     console.log(title);
-    // const userId = localStorage.getItem("user");
-    // const { loading, data } = useQuery(PARTICIPANT_EVENTS, {
-    //     variables: { userId },
-    //   });
+
       console.log(user);
       const part_events = user?.part_events || [];
     //   if (loading) {
@@ -21,7 +17,7 @@ const PartList = ({ user, title }) => {
     </>)
 }
  console.log(part_events);
-//  console.log(participantEvents.part_events);
+
   return (
     <div>
       <h3>{title}</h3>

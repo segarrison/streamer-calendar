@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import {
   ApolloClient,
   InMemoryCache,
@@ -8,8 +8,6 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import Navbar from './components/Navbar';
-import Main from './pages/main';
-import EventForm from './components/EventForm';
 import Profile from './pages/Profile';
 import Landing from './pages/Landing';
 
@@ -49,14 +47,7 @@ function App() {
         ) : (
           <Landing />
           )}
-        {/* <EventForm />
-        <Main /> */}
-
-        {/* <Switch>
-          {/* <Route exact path='/' component={} />
-          <Route exact path='/saved' component={} />
-          <Route render={() => <h1 className='display-2'>Wrong page!</h1>} /> */}
-        {/* </Switch> */} 
+      
       </>
     </Router>
     </ApolloProvider>

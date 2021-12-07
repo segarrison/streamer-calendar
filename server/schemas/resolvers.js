@@ -5,14 +5,12 @@ const { signToken } = require("../utils/auth");
 const resolvers = {
   Query: {
     //find all users
-    //can't populate the same path like this
     users: async () => {
       return await User.find({})
         .populate("hosted_events")
         .populate( { path: "hosted_events", populate: "participants"})
         .populate("part_events")
         .populate([{ path: "part_events", populate: "host"},]);
-        // .populate({ path: "part_events", populate: "participants" });
     },
 
     //find hostedEvents (by user)
@@ -27,15 +25,13 @@ const resolvers = {
         .populate("part_events")
         .populate({ path: "part_events", populate: "host" }).populate("hosted_events")
         .populate({ path: "hosted_events", populate: "participants" });
-        // .populate({ path: "part_events", populate: "participants" });
     },
+
     //find particpantEvents (by user)
-    //can't populate the same path like this
     participantEvents: async (parent, { userId }) => {
       return User.findOne({ _id: userId })
         .populate("part_events")
         .populate({ path: "part_events", populate: "host" });
-        // .populate({ path: "part_events", populate: "participants" });
     },
 
     // finds eveents and what is connected to them
@@ -51,16 +47,7 @@ const resolvers = {
       return await Event.find({ host: { _id: userId } }).populate(
         "participants"
       );
-      // return await Event.find({host: username }).populate("participants");
     },
-
-    // user : async (parent, { username }) => {
-    //   return await User.findOne({ username }).populate('events');
-    // },
-    // finds eveents and what is connected to them
-    // event : async(parent, { EventId }) => {
-    //   return await Event.findOne({_id: EventId}).populate('users');
-    // }
   },
   Mutation: {
     addUser: async (parent, { username, password, email }) => {

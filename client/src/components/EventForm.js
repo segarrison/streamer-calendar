@@ -17,7 +17,7 @@ export default function FormModal(props) {
   const [event_desc, setEvent_desc] = useState("");
   const [event_date, setEvent_date] = useState("");
   const [event_time, setEvent_time] = useState("");
-  const [num_of_part, setNum_of_part] = useState("");
+  // const [num_of_part, setNum_of_part] = useState("");
   const [participants, setParticipants] = useState([]);
   const [participants1, setParticipants1] = useState("");
   const [participants2, setParticipants2] = useState("");
@@ -71,11 +71,6 @@ export default function FormModal(props) {
   const handleChange = (e) => {
 
     const { name, value } = e.target;
-    // console.log(participants1);
-    //   const holdPlease = participants1;
-    //   console.log(holdPlease);
-    //   setParticipants((participants) => participants.concat(holdPlease));
-    //   console.log(participants);
     switch (name) {
       case "event_name":
         return setEvent_name(value);
@@ -85,16 +80,6 @@ export default function FormModal(props) {
         return setEvent_date(value);
       case "event_time":
         return setEvent_time(value);
-      // case "num_of_part":
-      //   return setNum_of_part(value);
-      // case "participants1":
-      //   return setParticipants1(value);
-      // case "participants2":
-      //   return setParticipants2(value);
-      // case "participants3":
-      //   return setParticipants3(value);
-      // case "participants4":
-      //   return setParticipants4(value);
     }
     
   };
@@ -150,15 +135,6 @@ export default function FormModal(props) {
                   onChange={handleChange}
                 />
               </div>
-              {/* <div className="form-group">
-                <label htmlFor="num_of_part">Number of Participants:</label>
-                <select className="form-control" id="num_of_part" onChange={handleChange} value={num_of_part} name="num_of_part">
-                  <option value = "1">1</option>
-                  <option value = "2">2</option>
-                  <option value = "3">3</option>
-                  <option value ="4 ">4</option>
-                  </select>
-              </div> */}
               <div className="form-group">
                 <label htmlFor="exampleFormControlSelect2">Participants</label>
                 <select
@@ -171,7 +147,7 @@ export default function FormModal(props) {
                   {users.map((user) => (
                     <option value={user._id}>{user.username}</option>
                   ))}
-                  {/* {userDropdowns(props.users)} */}
+               
                 </select>
               </div>
               <div className="form-group">
@@ -186,7 +162,7 @@ export default function FormModal(props) {
                   {users.map((user) => (
                     <option value={user._id}>{user.username}</option>
                   ))}
-                  {/* {userDropdowns(props.users)} */}
+                 
                 </select>
               </div>
               <div className="form-group">
@@ -201,7 +177,7 @@ export default function FormModal(props) {
                   {users.map((user) => (
                     <option value={user._id}>{user.username}</option>
                   ))}
-                  {/* {userDropdowns(props.users)} */}
+                
                 </select>
               </div>
               <div className="form-group">
@@ -216,7 +192,7 @@ export default function FormModal(props) {
                   {users.map((user) => (
                     <option value={user._id}>{user.username}</option>
                   ))}
-                  {/* {userDropdowns(props.users)} */}
+                
                 </select>
               </div>
               <div className="form-group">
