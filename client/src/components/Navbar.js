@@ -6,20 +6,23 @@ import LoginForm from './Login';
 import '../components/navbar.css';
 import '../fonts/Audiowide/Audiowide-Regular.ttf';
 
+
 import Auth from '../utils/auth';
+
 
 const AppNavbar = () => {
   // set modal display state
   const [showModal, setShowModal] = useState(false);
 
   const styleFonts = {
-    fontFamily: "Audiowide",
-    color: "#6441a5"
+    fontFamily: 'Audiowide',
+    color: "#6441a5",
+    fontSize: "xx-large",
   }
 
   return (
     <>
-      <Navbar bg='dark' variant='dark' expand='lg'>
+      <Navbar  variant='dark' expand='lg' style={{backgroundColor: "#19171c"}}>
         <Container fluid>
           <Navbar.Brand as={Link} to='/' style={styleFonts}>
             Stream.line
@@ -36,10 +39,10 @@ const AppNavbar = () => {
                   {/* <Nav.Link as={Link} to='/somewhere else'> */}
                     {/* something cool!  */}
                   {/* </Nav.Link> */}
-                  <Nav.Link onClick={Auth.logout} style={{color: "#0e9dd9"}}>Logout</Nav.Link>
+                  <Nav.Link onClick={Auth.logout} style={{color: "#6441a5"}}>Logout</Nav.Link>
                 </>
               ) : (
-                <Nav.Link onClick={() => setShowModal(true)} style={{color: "#0e9dd9"}}>Login/Sign Up</Nav.Link>
+                <Nav.Link onClick={() => setShowModal(true)} style={{color: "#6441a5"}}>Login/Sign Up</Nav.Link>
               )}
             </Nav>
           </Navbar.Collapse>
