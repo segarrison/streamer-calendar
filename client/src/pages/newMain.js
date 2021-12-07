@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Navbar from '../components/Navbar';
 import EventForm from '../components/EventForm'
 import Test from '../components/test';
+import Test2 from '../components/test2';
 import Auth from '../utils/auth'
 
 
@@ -17,9 +18,10 @@ const { render, number } = Test();
             <EventForm />
             {render}
             <div>{number}</div>
+            <Test2 num ={number}/>
             </>
             ):(
-            <div>login</div>)}
+            <div>Join a stream from some of your favorite genres!</div>)}
 
         </div>
     )
