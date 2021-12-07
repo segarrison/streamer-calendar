@@ -5,7 +5,9 @@ import { ListGroup } from "react-bootstrap";
 import { useQuery } from "@apollo/client";
 
 const JoinedCard = ()=>{
-    let { particpantData, loading } = useQuery( PARTICIPANT_EVENTS );
+    let { particpantData, loading } = useQuery( PARTICIPANT_EVENTS, {
+        variables: { userId: localStorage.getItem("user")} });
+
     const [part_overflow, setPart_overflow] = useState(1);
     // hard coded joined events 
     let isPart = particpantData?.participantEvents.part_events || 1;
