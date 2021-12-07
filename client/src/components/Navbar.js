@@ -12,11 +12,16 @@ const AppNavbar = () => {
   // set modal display state
   const [showModal, setShowModal] = useState(false);
 
+  const styleFonts = {
+    fontFamily: "Audiowide",
+    color: "#6441a5"
+  }
+
   return (
     <>
       <Navbar bg='dark' variant='dark' expand='lg'>
         <Container fluid>
-          <Navbar.Brand as={Link} to='/' style={{color: "#6441a5"}}>
+          <Navbar.Brand as={Link} to='/' style={styleFonts}>
             Stream.line
           </Navbar.Brand>
           <Navbar.Toggle aria-controls='navbar' />
