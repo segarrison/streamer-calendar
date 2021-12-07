@@ -8,17 +8,23 @@ import '../fonts/Audiowide/Audiowide-Regular.ttf';
 
 
 import Auth from '../utils/auth';
-<link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet"></link>;
+
 
 const AppNavbar = () => {
   // set modal display state
   const [showModal, setShowModal] = useState(false);
 
+  const styleFonts = {
+    fontFamily: 'Audiowide',
+    color: "#6441a5",
+    fontSize: "xx-large",
+  }
+
   return (
     <>
-      <Navbar bg='dark' variant='dark' expand='lg'>
+      <Navbar  variant='dark' expand='lg' style={{backgroundColor: "#19171c"}}>
         <Container fluid>
-          <Navbar.Brand as={Link} to='/' style={{color: "#6441a5", fontFamily: "'Audiowide', cursive"}}>
+          <Navbar.Brand as={Link} to='/' style={styleFonts}>
             Stream.line
           </Navbar.Brand>
           <Navbar.Toggle aria-controls='navbar' />

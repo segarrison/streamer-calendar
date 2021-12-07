@@ -20,8 +20,7 @@ export default class StreamerApp extends React.Component {
   render() {
     const mainStyle = {
       container: {
-        backgroundColor: "#6441a5",
-        borderStyle: "solid",
+        background: "linear-gradient(135deg, #6441a5 50%, #0e9dd9)",
         borderRadius: "20px",
       },
       font: {
@@ -29,11 +28,8 @@ export default class StreamerApp extends React.Component {
         fontFamily: "'Audiowide', cursive",
       },
       calendar: {
-        backgroundColor: "#6441a5",
-        borderStyle: "solid",
+        backgroundColor: "#F0F3F4",
         borderRadius: "20px",
-        fontColor: "#0e9dd9",
-        fontFamily: "'Audiowide', cursive",
       }
     };
     return (
@@ -69,7 +65,7 @@ export default class StreamerApp extends React.Component {
             <div class="col-sm-7" >
               <div className='streamer-app' style={mainStyle.font}>
               {/* {this.renderSidebar()} */}
-                  <div className='streamer-app-main'>
+                  <div className='streamer-app-main' style={mainStyle.calendar}>
                       <FullCalendar
                       plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
                       headerToolbar={{
