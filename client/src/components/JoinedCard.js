@@ -8,8 +8,9 @@ const JoinedCard = ()=>{
     let { particpantData, loading } = useQuery( PARTICIPANT_EVENTS );
     const [part_overflow, setPart_overflow] = useState(1);
     // hard coded joined events 
-    // isPart = ["pubg 8am 12/15/21","apex 9:30pm 12/15/21","D&D 11:00am 12/15/21","tf2 championship 10pm 12/15/21","deadcells idk the time","rainbow 6","wiisports","ark","halo infinite","wow","wow"]
     let isPart = particpantData?.participantEvents.part_events || 1;
+    // isPart = ["pubg 8am 12/15/21","apex 9:30pm 12/15/21","D&D 11:00am 12/15/21","tf2 championship 10pm 12/15/21","deadcells idk the time","rainbow 6","wiisports","ark","halo infinite","wow","wow"]
+
     if (loading){
       return <div>still loading</div>
     }
