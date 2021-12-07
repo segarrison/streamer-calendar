@@ -3,7 +3,7 @@ import { useQuery } from "@apollo/client";
 import HostList from "../components/HostList";
 import PartList from "../components/PartList";
 import EventForm from "../components/EventForm";
-import { USER  } from "../utils/queries";
+import { USER } from "../utils/queries";
 
 const Profile = () => {
   const userId = localStorage.getItem("user");
@@ -16,7 +16,6 @@ const Profile = () => {
   const user = data?.user || [];
   console.log(user);
 
-  
   return (
     <main>
       <div className="flex-row justify-center">
@@ -30,21 +29,15 @@ const Profile = () => {
           {loading ? (
             <div>Loading...</div>
           ) : (
-            <HostList
-              user={user}
-              title="Events You're Hosting:"
-            />
+            <HostList user={user} title="Events You're Hosting:" />
           )}
         </div>
         <div className="col-12 col-md-8 mb-3">
           {loading ? (
             <div>Loading...</div>
           ) : (
-            <PartList
-            user={user}
-            title="Events You're Participating In:"
-            />
-         )} 
+            <PartList user={user} title="Events You're Participating In:" />
+          )}
         </div>
       </div>
     </main>

@@ -37,7 +37,6 @@ export default function FormModal(props) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("hitting save");
-    
 
     try {
       console.log("hello world");
@@ -69,7 +68,6 @@ export default function FormModal(props) {
   };
 
   const handleChange = (e) => {
-
     const { name, value } = e.target;
     switch (name) {
       case "event_name":
@@ -81,32 +79,23 @@ export default function FormModal(props) {
       case "event_time":
         return setEvent_time(value);
     }
-    
   };
 
   const handleChangeP1 = (e) => {
-
     const { name, value } = e.target;
     return setParticipants((participants) => participants.concat(value));
-
   };
   const handleChangeP2 = (e) => {
-
     const { name, value } = e.target;
     return setParticipants((participants) => participants.concat(value));
-
   };
   const handleChangeP3 = (e) => {
-
     const { name, value } = e.target;
     return setParticipants((participants) => participants.concat(value));
-
   };
   const handleChangeP4 = (e) => {
-
     const { name, value } = e.target;
     return setParticipants((participants) => participants.concat(value));
-
   };
 
   return (
@@ -115,13 +104,13 @@ export default function FormModal(props) {
         Add An Event
       </Button>
       <Modal show={show} id="addEvent">
-        <ModalDialog>
-          <ModalHeader closeButton onClick={() => setShow(false)}>
-            <ModalTitle>
+        <Modal.Dialog>
+          <Modal.Header closeButton onClick={() => setShow(false)}>
+            <Modal.Title>
               <i className="far fa-calendar-plus"></i> Make a New Event
-            </ModalTitle>
-          </ModalHeader>
-          <ModalBody>
+            </Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
             <form {...props} autoComplete="off">
               <div className="form-group">
                 <label htmlFor="event_name">Event Name</label>
@@ -147,7 +136,6 @@ export default function FormModal(props) {
                   {users.map((user) => (
                     <option value={user._id}>{user.username}</option>
                   ))}
-               
                 </select>
               </div>
               <div className="form-group">
@@ -162,7 +150,6 @@ export default function FormModal(props) {
                   {users.map((user) => (
                     <option value={user._id}>{user.username}</option>
                   ))}
-                 
                 </select>
               </div>
               <div className="form-group">
@@ -177,7 +164,6 @@ export default function FormModal(props) {
                   {users.map((user) => (
                     <option value={user._id}>{user.username}</option>
                   ))}
-                
                 </select>
               </div>
               <div className="form-group">
@@ -192,7 +178,6 @@ export default function FormModal(props) {
                   {users.map((user) => (
                     <option value={user._id}>{user.username}</option>
                   ))}
-                
                 </select>
               </div>
               <div className="form-group">
@@ -229,8 +214,8 @@ export default function FormModal(props) {
                 ></textarea>
               </div>
             </form>
-          </ModalBody>
-          <ModalFooter>
+          </Modal.Body>
+          <Modal.Footer>
             <Button onClick={() => setShow(false)} variant="secondary">
               Close
             </Button>
@@ -241,8 +226,8 @@ export default function FormModal(props) {
             >
               Save Event
             </Button>
-          </ModalFooter>
-        </ModalDialog>
+          </Modal.Footer>
+        </Modal.Dialog>
       </Modal>
     </>
   );

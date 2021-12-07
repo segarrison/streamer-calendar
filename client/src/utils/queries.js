@@ -26,10 +26,10 @@ import { gql } from "@apollo/client";
 //find all users
 export const USERS = gql`
   query users {
-  users{
-    _id
-    username
-  }  
+    users {
+      _id
+      username
+    }
   }
 `;
 
@@ -86,7 +86,7 @@ export const USER = gql`
         participants {
           username
         }
-        }
+      }
       part_events {
         _id
         event_name

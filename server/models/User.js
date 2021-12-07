@@ -28,10 +28,12 @@ const UserSchema = new Schema({
     },
   ],
 
-  part_events: [{
-    type: Schema.Types.ObjectId,
-    ref: "Event"
-  }]
+  part_events: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Event",
+    },
+  ],
 });
 
 UserSchema.pre("save", async function (next) {

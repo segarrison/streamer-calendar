@@ -8,9 +8,9 @@ const resolvers = {
     users: async () => {
       return await User.find({})
         .populate("hosted_events")
-        .populate( { path: "hosted_events", populate: "participants"})
+        .populate({ path: "hosted_events", populate: "participants" })
         .populate("part_events")
-        .populate([{ path: "part_events", populate: "host"},]);
+        .populate([{ path: "part_events", populate: "host" }]);
     },
 
     //find hostedEvents (by user)
@@ -23,7 +23,8 @@ const resolvers = {
     user: async (parent, { userId }) => {
       return User.findOne({ _id: userId })
         .populate("part_events")
-        .populate({ path: "part_events", populate: "host" }).populate("hosted_events")
+        .populate({ path: "part_events", populate: "host" })
+        .populate("hosted_events")
         .populate({ path: "hosted_events", populate: "participants" });
     },
 
