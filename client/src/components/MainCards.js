@@ -7,18 +7,22 @@ import { useMutation, useQuery } from "@apollo/client";
 const MainCards =()=>{
 
     let { particpantData, loading } = useQuery( PARTICIPANT_EVENTS );
-
+    const [part_overflow, setPart_overflow] = useState(1);
     // actual joined events events
 // -----------------------------------------------------------
-    // const isPart = particpantData?.part_events || [];
-    // if (loading){
-    //   return <div>still loading</div>
-    // }
-    
+    let isPart = particpantData?.participantEvents.part_events || 1;
+    if (loading){
+      return <div>still loading</div>
+    }
+//======================================================================================================
     // hardcoded joined events
-    let isPart = ["joe","show","moe","low","tow", "no", "stow", 'flow', 'wow', 'wow', 'now', 'spow']
+    // let isPart = ["joe","show","moes","low","tow", "no", "stow", 'flow', 'wow', 'wow', 'now', 'spow']
+    // let isPart = 1;
+    // console.log(isPart)
+//--------------------------------------------------------------------------------------------------- 
     let overFlow;
-    let [part_overflow, setPart_overflow] = useState(1);
+
+    if(!isPart === 1)
     if(isPart.length > 9){
         overFlow = isPart.length - 9
     }
@@ -40,7 +44,7 @@ return(
                 <ListGroup variant="flush">
                     {/* create a loop for the data and create a min and max lim so the card
                     can only be 26rem */}
-                    { !(isPart === [])?(
+                    { !(isPart === 1)?(
                     <>
                     {(isPart < 8)?(
                         <>
