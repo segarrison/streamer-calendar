@@ -25,10 +25,11 @@ const typeDefs = gql`
     users:[User]
     hostedEvents(userId: ID!): User
     participantEvents(userId: ID!): User
+    user(userId: ID!): User
     events:[Event]
     hostedByEvent(userId: ID!): Event
-    user:[User]
-    event:[Event]
+    
+    
   }
 
   type Auth {

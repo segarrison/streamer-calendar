@@ -73,6 +73,35 @@ export const PARTICIPANT_EVENTS = gql`
   }
 `;
 
+export const USER = gql`
+  query user($userId: ID!) {
+    user(userId: $userId) {
+      _id
+      username
+      hosted_events {
+        event_name
+        event_desc
+        event_date
+        event_time
+        participants {
+          username
+        }
+        }
+      part_events {
+        _id
+        event_name
+        host {
+          username
+          _id
+        }
+        event_desc
+        event_date
+        event_time
+      }
+    }
+  }
+`;
+
 // hosted_events {
 //   _id
 //   event_name

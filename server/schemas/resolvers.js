@@ -21,6 +21,14 @@ const resolvers = {
         .populate("hosted_events")
         .populate({ path: "hosted_events", populate: "participants" });
     },
+    //find user by id
+    user: async (parent, { userId }) => {
+      return User.findOne({ _id: userId })
+        .populate("part_events")
+        .populate({ path: "part_events", populate: "host" }).populate("hosted_events")
+        .populate({ path: "hosted_events", populate: "participants" });
+        // .populate({ path: "part_events", populate: "participants" });
+    },
     //find particpantEvents (by user)
     //can't populate the same path like this
     participantEvents: async (parent, { userId }) => {

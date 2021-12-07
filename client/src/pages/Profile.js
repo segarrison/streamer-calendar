@@ -1,17 +1,22 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
 import HostList from "../components/HostList";
+import PartList from "../components/PartList";
 import EventForm from "../components/EventForm";
-import { HOSTED_EVENTS } from "../utils/queries";
+import { USER  } from "../utils/queries";
 
 const Profile = () => {
-  const user = localStorage.getItem("user");
-  const userId = user._id;
-  const { loading, data } = useQuery(HOSTED_EVENTS, {
+  const userId = localStorage.getItem("user");
+
+  console.log(userId);
+  const { loading, data } = useQuery(USER, {
     variables: { userId },
   });
-  const hostedEvents = data?.hostedEvents || [];
+  console.log(data);
+  const user = data?.user || [];
+  console.log(user);
 
+  
   return (
     <main>
       <div className="flex-row justify-center">
@@ -26,10 +31,20 @@ const Profile = () => {
             <div>Loading...</div>
           ) : (
             <HostList
-              hostedEvents={hostedEvents}
+              user={user}
               title="Events You're Hosting:"
             />
           )}
+        </div>
+        <div className="col-12 col-md-8 mb-3">
+          {loading ? (
+            <div>Loading...</div>
+          ) : (
+            <PartList
+            user={user}
+            title="Events You're Participating In:"
+            />
+         )} 
         </div>
       </div>
     </main>

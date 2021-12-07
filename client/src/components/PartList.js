@@ -1,22 +1,39 @@
 import React from "react";
+// import { useQuery } from "@apollo/client";
+// import { PARTICIPANT_EVENTS } from "../utils/queries";
 
-const PartList = ({ participantEvents, title }) => {
-  if (!participantEvents.length) {
-    return <h3>Not participating in anything yet!</h3>;
-  }
-
+const PartList = ({ user, title }) => {
+    console.log(title);
+    // const userId = localStorage.getItem("user");
+    // const { loading, data } = useQuery(PARTICIPANT_EVENTS, {
+    //     variables: { userId },
+    //   });
+      console.log(user);
+      const part_events = user?.part_events || [];
+    //   if (loading) {
+    //     return <div>still loading</div>;
+    //   }
+  if (!part_events.length) {
+    return (
+        <>
+        <h3>{title}</h3>
+    <h4>Not participating in anything yet!</h4>
+    </>)
+}
+ console.log(part_events);
+//  console.log(participantEvents.part_events);
   return (
     <div>
-      <h3>{pTitle}</h3>
-      {participantEvents &&
-        participantEvents.map((event) => (
-          <div key={event.part_events._id} className="card">
-            <h4 className="card-header">{event.part_events.event_name}</h4>
+      <h3>{title}</h3>
+      {part_events &&
+        part_events.map((event) => (
+          <div key={event._id} className="card">
+            <h4 className="card-header">{event.event_name}</h4>
             <div className="card-body">
-              <p>{event.part_events.host.username}</p>
-              <p>{event.part_events.event_desc}</p>
-              <p>{event.part_events.event_date}</p>
-              <p>{event.part_events.event_time}</p>
+              <p>{event.host.username}</p>
+              <p>{event.event_desc}</p>
+              <p>{event.event_date}</p>
+              <p>{event.event_time}</p>
             </div>
           </div>
         ))}

@@ -10,6 +10,10 @@ import { setContext } from '@apollo/client/link/context';
 import Navbar from './components/Navbar';
 import Main from './pages/main';
 import EventForm from './components/EventForm';
+import Profile from './pages/Profile';
+import Landing from './pages/Landing';
+
+import Auth from './utils/auth';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -40,8 +44,13 @@ function App() {
     <Router>
       <>
         <Navbar />
-        <EventForm />
-        <Main />
+        {Auth.loggedIn() ? (
+        <Profile />
+        ) : (
+          <Landing />
+          )}
+        {/* <EventForm />
+        <Main /> */}
 
         {/* <Switch>
           {/* <Route exact path='/' component={} />
