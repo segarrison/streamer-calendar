@@ -6,7 +6,9 @@ import LoginForm from './Login';
 import '../components/navbar.css';
 import '../fonts/Audiowide/Audiowide-Regular.ttf';
 
+
 import Auth from '../utils/auth';
+<link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet"></link>;
 
 const AppNavbar = () => {
   // set modal display state
@@ -16,7 +18,7 @@ const AppNavbar = () => {
     <>
       <Navbar bg='dark' variant='dark' expand='lg'>
         <Container fluid>
-          <Navbar.Brand as={Link} to='/' style={{color: "#6441a5"}}>
+          <Navbar.Brand as={Link} to='/' style={{color: "#6441a5", fontFamily: "'Audiowide', cursive"}}>
             Stream.line
           </Navbar.Brand>
           <Navbar.Toggle aria-controls='navbar' />
@@ -31,10 +33,10 @@ const AppNavbar = () => {
                   {/* <Nav.Link as={Link} to='/somewhere else'> */}
                     {/* something cool!  */}
                   {/* </Nav.Link> */}
-                  <Nav.Link onClick={Auth.logout} style={{color: "#0e9dd9"}}>Logout</Nav.Link>
+                  <Nav.Link onClick={Auth.logout} style={{color: "#6441a5"}}>Logout</Nav.Link>
                 </>
               ) : (
-                <Nav.Link onClick={() => setShowModal(true)} style={{color: "#0e9dd9"}}>Login/Sign Up</Nav.Link>
+                <Nav.Link onClick={() => setShowModal(true)} style={{color: "#6441a5"}}>Login/Sign Up</Nav.Link>
               )}
             </Nav>
           </Navbar.Collapse>

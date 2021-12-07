@@ -4,6 +4,7 @@ import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
 import EventForm from '../components/EventForm';
+<link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet"></link>;
 // import { INITIAL_EVENTS, createEventId } from './event-utils'
 
 
@@ -17,12 +18,22 @@ export default class StreamerApp extends React.Component {
   }
 
   render() {
+    const mainStyle = {
+      container: {
+        backgroundColor: "#6441a5",
+        borderStyle: "solid",
+      },
+      font: {
+        color: "#0e9dd9",
+        fontFamily: "'Audiowide', cursive",
+      },
+    };
     return (
           <div class="row">
-            <div class="col-sm-1"></div>
+            <div class="col-sm-1" style={mainStyle.container}></div>
             <div className='streamer-app-sidebar' class="col-sm-3">
                     <div className='streamer-app-sidebar-section'>
-                      <h2 style={{color: "#6441a5"}}>Upcoming Events</h2>
+                      <h2 style={mainStyle.font}>Upcoming Events</h2>
                       <ul>
                         <li>item 1</li>
                         <li>item 2</li>
